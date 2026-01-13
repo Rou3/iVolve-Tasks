@@ -37,13 +37,17 @@ Steps:
 **Install Maven.**
 1.Clone the source code from:
     https://github.com/Ibrahim-Adel15/build2.git
+
 2.Run unit tests.
+
 3.Build the application. 
   Commands:
     mvn test
     mvn package
+
 4.The generated artifact will be:
     target/hello-ivolve-1.0-SNAPSHOT.jar
+
 5.Run the application:
     java -jar target/hello-ivolve-1.0-SNAPSHOT.jar
 
@@ -53,8 +57,11 @@ This lab focuses on running a Spring Boot application inside a Docker container 
 Steps:
 1.Clone the project:
 https://github.com/Ibrahim-Adel15/Docker-1.git
+
 2.Write a Dockerfile using Maven and Java 17.
+
 3.Build the Docker image.
+
 4.Run the container and test the application.
 
 **Dockerfile:**
@@ -77,9 +84,13 @@ curl http://localhost:8080
 In this lab, the application is built first, then only the JAR file is used inside the Docker image.
 
 Steps:
+
 1. Build the application using Maven.
+
 2. Write a Dockerfile with Java 17 base image.
+
 3. Copy the JAR file into the container.
+
 4. Run and test the application.
 
 **Dockerfile:**
@@ -102,8 +113,11 @@ This lab demonstrates how to use multi-stage Docker builds to create a lightweig
 Steps:
 
 1.Clone the same Spring Boot project.
+
 2.Use Maven image for build stage.
+
 3.Use Java image for runtime stage.
+
 4.Build, run, and test the application.
 
 Dockerfile (Multi-Stage):
