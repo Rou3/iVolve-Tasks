@@ -83,7 +83,7 @@ Hello from Bind Mount
 Edit the `index.html` on your host machine, for example:
 
 ```html
-<h1>Hello from Bind Mount - Updated!</h1>
+<h1>Hello Rawan</h1>
 ```
 
 Verify changes via curl again:
@@ -112,4 +112,5 @@ docker volume rm nginx_logs
 ```
 <img width="814" height="206" alt="lab7-7" src="https://github.com/user-attachments/assets/860db151-4ee3-44c3-8c37-8ee2a05186a3" />
 ---
+
 
