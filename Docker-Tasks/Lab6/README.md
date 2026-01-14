@@ -1,9 +1,3 @@
-
-<img width="810" height="160" alt="lab6-6" src="https://github.com/user-attachments/assets/4d2716e1-e299-4b54-bc1f-14726bd96bce" />
-<img width="806" height="247" alt="lab6-5" src="https://github.com/user-attachments/assets/a8198836-7e6c-4d90-a58f-1449a4ce5009" />
-<img width="811" height="286" alt="lab6-4" src="https://github.com/user-attachments/assets/2bb74e7d-59b3-4a7d-9fcf-43e481e72e0d" />
-<img width="821" height="70" alt="lab6-3" src="https://github.com/user-attachments/assets/e586a185-cc5a-4f8a-8eba-e44e089d5d5b" />
-<img width="465" height="190" alt="lab6-2" src="https://github.com/user-attachments/assets/3405cf17-b697-4e66-935f-3790a9aaea81" />
 # Lab 6: Managing Docker Environment Variables Across Build and Runtime
 
 This lab demonstrates how to manage **environment variables** in Docker for different stages: **development**, **staging**, and **production**, using Python and Flask.
@@ -43,7 +37,7 @@ EXPOSE 8080
 # Run the application
 CMD ["python", "app.py"]
 ```
-
+<img width="810" height="160" alt="lab6-6" src="https://github.com/user-attachments/assets/4d2716e1-e299-4b54-bc1f-14726bd96bce" />
 ---
 
 ## 3️⃣ Build the Docker Image
@@ -51,7 +45,7 @@ CMD ["python", "app.py"]
 ```bash
 docker build -t myflaskapp .
 ```
-
+<img width="806" height="247" alt="lab6-5" src="https://github.com/user-attachments/assets/a8198836-7e6c-4d90-a58f-1449a4ce5009" />
 ---
 
 ## 4️⃣ Run Containers with Different Environment Variables
@@ -66,6 +60,7 @@ docker run -d -p 8081:8080 \
   -e APP_REGION=us-east \
   myflaskapp
 ```
+<img width="811" height="286" alt="lab6-4" src="https://github.com/user-attachments/assets/2bb74e7d-59b3-4a7d-9fcf-43e481e72e0d" />
 
 ### Staging Container
 
@@ -81,6 +76,7 @@ APP_REGION=us-west
 ```bash
 docker run -d --env-file staging.env -p 8082:8080 myflaskapp
 ```
+<img width="821" height="70" alt="lab6-3" src="https://github.com/user-attachments/assets/e586a185-cc5a-4f8a-8eba-e44e089d5d5b" />
 
 ### Production Container
 
@@ -89,7 +85,7 @@ Uses variables defined in Dockerfile:
 ```bash
 docker run -d -p 8083:8080 myflaskapp
 ```
-
+<img width="465" height="190" alt="lab6-2" src="https://github.com/user-attachments/assets/3405cf17-b697-4e66-935f-3790a9aaea81" />
 ---
 
 ## 5️⃣ Ports & Environment Variables Summary
@@ -102,11 +98,3 @@ docker run -d -p 8083:8080 myflaskapp
 
 ---
 
-## ✅ Notes & Tips
-
-* Use `--env-file` to manage multiple environment variables easily.
-* Dockerfile `ENV` is useful for **default or production variables**.
-* Make sure host ports **do not conflict** when running multiple containers.
-* This setup allows you to **run multiple containers simultaneously** with different configurations.
-
----
