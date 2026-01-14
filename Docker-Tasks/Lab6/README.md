@@ -37,7 +37,7 @@ EXPOSE 8080
 # Run the application
 CMD ["python", "app.py"]
 ```
-<img width="810" height="160" alt="lab6-6" src="https://github.com/user-attachments/assets/4d2716e1-e299-4b54-bc1f-14726bd96bce" />
+<img width="465" height="190" alt="lab6-2" src="https://github.com/user-attachments/assets/3405cf17-b697-4e66-935f-3790a9aaea81" />
 ---
 
 ## 3️⃣ Build the Docker Image
@@ -85,7 +85,7 @@ Uses variables defined in Dockerfile:
 ```bash
 docker run -d -p 8083:8080 myflaskapp
 ```
-<img width="465" height="190" alt="lab6-2" src="https://github.com/user-attachments/assets/3405cf17-b697-4e66-935f-3790a9aaea81" />
+<img width="810" height="160" alt="lab6-6" src="https://github.com/user-attachments/assets/4d2716e1-e299-4b54-bc1f-14726bd96bce" />
 ---
 
 ## 5️⃣ Ports & Environment Variables Summary
