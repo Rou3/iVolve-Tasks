@@ -45,7 +45,7 @@ CMD ["python", "app.py"]
 ```bash
 docker build -t myflaskapp .
 ```
-<img width="806" height="247" alt="lab6-5" src="https://github.com/user-attachments/assets/a8198836-7e6c-4d90-a58f-1449a4ce5009" />
+<img width="821" height="70" alt="lab6-3" src="https://github.com/user-attachments/assets/e586a185-cc5a-4f8a-8eba-e44e089d5d5b" />
 ---
 
 ## 4️⃣ Run Containers with Different Environment Variables
@@ -76,7 +76,7 @@ APP_REGION=us-west
 ```bash
 docker run -d --env-file staging.env -p 8082:8080 myflaskapp
 ```
-<img width="821" height="70" alt="lab6-3" src="https://github.com/user-attachments/assets/e586a185-cc5a-4f8a-8eba-e44e089d5d5b" />
+<img width="806" height="247" alt="lab6-5" src="https://github.com/user-attachments/assets/a8198836-7e6c-4d90-a58f-1449a4ce5009" />
 
 ### Production Container
 
