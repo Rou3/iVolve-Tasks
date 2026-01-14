@@ -99,8 +99,7 @@ curl http://localhost:8080
 Check logs stored in the `nginx_logs` volume:
 
 ```bash
-docker run --rm -v nginx_logs:/var/log/nginx busybox ls /var/log/nginx
-docker run --rm -v nginx_logs:/var/log/nginx busybox cat /var/log/nginx/access.log
+sudo ls /var/lib/docker/volumes/nginx_logs/_data
 ```
 <img width="812" height="106" alt="lab7-6" src="https://github.com/user-attachments/assets/2c33766b-1f51-48a5-b354-09b469018c68" />
 ---
@@ -112,5 +111,6 @@ docker volume rm nginx_logs
 ```
 <img width="814" height="206" alt="lab7-7" src="https://github.com/user-attachments/assets/860db151-4ee3-44c3-8c37-8ee2a05186a3" />
 ---
+
 
 
