@@ -1,4 +1,9 @@
 
+<img width="810" height="160" alt="lab6-6" src="https://github.com/user-attachments/assets/4d2716e1-e299-4b54-bc1f-14726bd96bce" />
+<img width="806" height="247" alt="lab6-5" src="https://github.com/user-attachments/assets/a8198836-7e6c-4d90-a58f-1449a4ce5009" />
+<img width="811" height="286" alt="lab6-4" src="https://github.com/user-attachments/assets/2bb74e7d-59b3-4a7d-9fcf-43e481e72e0d" />
+<img width="821" height="70" alt="lab6-3" src="https://github.com/user-attachments/assets/e586a185-cc5a-4f8a-8eba-e44e089d5d5b" />
+<img width="465" height="190" alt="lab6-2" src="https://github.com/user-attachments/assets/3405cf17-b697-4e66-935f-3790a9aaea81" />
 # Lab 6: Managing Docker Environment Variables Across Build and Runtime
 
 This lab demonstrates how to manage **environment variables** in Docker for different stages: **development**, **staging**, and **production**, using Python and Flask.
@@ -10,7 +15,7 @@ This lab demonstrates how to manage **environment variables** in Docker for diff
 git clone https://github.com/Ibrahim-Adel15/Docker-3.git
 cd Docker-3
 ````
-
+<img width="807" height="175" alt="lab6-1" src="https://github.com/user-attachments/assets/d72624b0-330f-4617-bbb0-98f776a15f3c" />
 ---
 
 ## 2️⃣ Create the Dockerfile
