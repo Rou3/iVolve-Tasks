@@ -1,37 +1,66 @@
-**Lab 3: Java Spring Boot App in Docker
+# Lab 3: Run Java Spring Boot App in a Container
 
-**Steps:
+This lab demonstrates running a Java Spring Boot application inside a Docker container.
 
-1.Clone the project
-  -git clone https://github.com/Ibrahim-Adel15/Docker-1.git
-  -cd Docker-1
+## Prerequisites
 
-2.Write Dockerfile
-  -steps:
-     FROM maven:3.9.0-eclipse-temurin-17
-     WORKDIR /app
-     COPY . /app
-     RUN mvn package
-     EXPOSE 8080
-     CMD ["java", "-jar", "target/demo-0.0.1-SNAPSHOT.jar"]
+- Docker installed
+- Maven installed (optional if using Maven base image)
 
-4.Build Docker Image
-  -docker build -t lab3 .
+## Clone the Application
 
-5.Run Docker Container
-  -docker run -d -p 8080:8080 --name container1 lab3
+```bash
+git clone https://github.com/Ibrahim-Adel15/Docker-1.git
+cd Docker-1
+````
 
-6.Test Application
-  -curl http://localhost:8080
+## Dockerfile
 
-7.Stop and Remove Container
-  -docker stop container1
-  -docker rm container1
+Create a `Dockerfile` with the following content:
 
-**Project Structure
+```dockerfile
+# Use Maven base image with Java 17
+FROM maven:3.9.0-eclipse-temurin-17
 
-Docker-1/
-├── Dockerfile
-├── pom.xml
-├── src/          # Spring Boot source code
-└── target/       # Generated JAR
+# Set working directory
+WORKDIR /app
+
+# Copy application source code
+COPY . .
+
+# Build the application
+RUN mvn package
+
+# Expose port 8080
+EXPOSE 8080
+
+# Run the application
+CMD ["java", "-jar", "target/demo-0.0.1-SNAPSHOT.jar"]
+```
+
+## Build Docker Image
+
+```bash
+docker build -t app1 .
+```
+
+## Run Container
+
+```bash
+docker run -d --name container1 -p 8080:8080 app1
+```
+
+## Test the Application
+
+Open your browser or use curl:
+
+```bash
+curl http://localhost:8080/
+```
+
+## Stop and Remove the Container
+
+```bash
+docker stop container1
+docker rm container1
+```
