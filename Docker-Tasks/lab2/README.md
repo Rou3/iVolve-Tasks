@@ -1,27 +1,50 @@
-Lab 2: Java Application with Maven
+# Lab 2: Building and Packaging Java Applications with Maven
 
-1.Clone the project
-  -git clone https://github.com/Ibrahim-Adel15/build2.git
-  -cd build2
+This lab demonstrates building, testing, and running a Java application using Maven.
 
-2-Install Maven (if needed)
-  -sudo apt install maven -y
-  -mvn -v
+## Prerequisites
 
-3.Run Unit Tests
-  -mvn test
+- Java JDK installed
+- Maven installed
 
-4.Build the App
-  -mvn clean package
+## Clone the Application
 
-5.Run the App
-  -java -jar target/hello-ivolve-1.0-SNAPSHOT.jar
+```bash
+git clone https://github.com/Ibrahim-Adel15/build2.git
+cd build2
+````
 
+## Run Unit Tests
 
-Project Structure
+```bash
+mvn test
+```
 
-build2/
-├── pom.xml       # Maven build file
-├── src/          # Java source code
-└── target/       # Generated JAR
+Check test results in:
 
+```bash
+target/surefire-reports/
+```
+
+## Build the Application
+
+```bash
+mvn package
+```
+
+The generated artifact will be located at:
+
+```bash
+target/hello-ivolve-1.0-SNAPSHOT.jar
+```
+
+## Run the Application
+
+```bash
+java -jar target/hello-ivolve-1.0-SNAPSHOT.jar
+```
+
+## Verify Application
+
+* Ensure the app runs without errors.
+* Check expected output on the console.
