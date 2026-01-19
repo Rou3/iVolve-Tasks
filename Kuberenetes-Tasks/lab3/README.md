@@ -1,4 +1,4 @@
-#Lab 12: Managing Configuration and Sensitive Data with ConfigMaps and Secrets
+#Lab 3: Managing Configuration and Sensitive Data with ConfigMaps and Secrets
 
 ## Objective
 - Store non-sensitive MySQL configuration variables using a **ConfigMap**.
@@ -36,6 +36,7 @@ Verify:
 kubectl get configmap -n ivolve
 kubectl describe configmap mysql-config -n ivolve
 ```
+<img width="817" height="221" alt="lab3-k1" src="https://github.com/user-attachments/assets/5f0ecb51-9fff-43b7-8a5d-e4de70360e76" />
 
 ---
 
@@ -74,6 +75,7 @@ Verify:
 kubectl get secret -n ivolve
 kubectl describe secret mysql-secret -n ivolve
 ```
+<img width="803" height="182" alt="lab3-k3" src="https://github.com/user-attachments/assets/fe7734a5-73d2-497a-b5e9-edcfe5fd8d7b" />
 
 ---
 
@@ -99,6 +101,7 @@ env:
         name: mysql-secret
         key: DB_PASSWORD
 ```
+<img width="801" height="462" alt="lab3-k41" src="https://github.com/user-attachments/assets/ec3e829e-afd3-4c78-85d1-24743e249cc1" />
 
 ---
 
