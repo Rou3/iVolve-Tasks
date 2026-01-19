@@ -1,4 +1,4 @@
-# Lab 10: Node Isolation Using Taints in Kubernetes
+# Lab 1: Node Isolation Using Taints in Kubernetes
 
 ## Objective
 Demonstrate how to isolate a Kubernetes node using **taints** to prevent pods from being scheduled on it unless they explicitly tolerate the taint.
