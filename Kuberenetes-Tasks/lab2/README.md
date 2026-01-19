@@ -1,4 +1,4 @@
-# Lab 11: Namespace Management and Resource Quota Enforcement
+# Lab : Namespace Management and Resource Quota Enforcement
 
 ## Objective
 - Create a Kubernetes namespace called `ivolve`.
@@ -20,6 +20,8 @@ Verify the namespace:
 ```bash
 kubectl get namespaces
 ```
+<img width="818" height="43" alt="Screenshot 2026-01-19 194154" src="https://github.com/user-attachments/assets/53dcb738-8f61-4961-9e3d-17493ae534cb" />
+
 
 ---
 
@@ -50,6 +52,7 @@ Check the quota status:
 kubectl get resourcequota -n ivolve
 kubectl describe resourcequota pod-quota -n ivolve
 ```
+<img width="813" height="264" alt="Screenshot 2026-01-19 194342" src="https://github.com/user-attachments/assets/fd220242-69a7-4d5a-bb39-85a3895262f1" />
 
 ---
 
@@ -68,4 +71,5 @@ kubectl run test3 --image=nginx -n ivolve
 ```
 Error from server (Forbidden): exceeded quota: pod-quota, requested: pods=1, used: pods=2, limited: pods=2
 ```
+<img width="817" height="237" alt="Screenshot 2026-01-19 194418" src="https://github.com/user-attachments/assets/76e81aa3-1d4c-463f-bb2d-ea736f8f505e" />
 
