@@ -1,51 +1,81 @@
-# Lab 4: Run Java Spring Boot App in a Container
+# Lab 4: Run Java Spring Boot App in a Container (JAR Deployment)
 
-This lab demonstrates how to run a **Java Spring Boot application** inside a Docker container using **Java 17**.
+This lab demonstrates running a pre-built Java Spring Boot JAR inside a Docker container using a Java base image.
 
-In this lab, you first clone the project, build the application, create a Docker image, run it in a container, test the application, and finally stop and remove the container.
+## Prerequisites
 
-**Steps:**
+- Docker installed
+- Java JDK installed (for building the JAR)
 
-1. Clone the project:
-   ```bash
-   -git clone https://github.com/Ibrahim-Adel15/Docker-1.git
-   -cd Docker-1
+## Clone the Application
 
-2. Build the application using Maven:
-   -mvn clean package
+```bash
+git clone https://github.com/Ibrahim-Adel15/Docker-1.git
+cd Docker-1
+````
 
-3. Write a Dockerfile:
-   -Steps:
+## Build the Application
 
-   # Use Java 17 base image
-     FROM eclipse-temurin:17-jdk
-   # Create work directory
-     WORKDIR /app
-   # Copy the JAR file into the container
-     COPY target/demo-0.0.1-SNAPSHOT.jar /app/demo-0.0.1-SNAPSHOT.jar
-   # Expose port 8080
-     EXPOSE 8080
-   # Run the application
-     CMD ["java", "-jar", "demo-0.0.1-SNAPSHOT.jar"]
+```bash
+mvn package
+```
 
-4. Build the Docker image:
-   -docker build -t app2 .
+The JAR file will be located at:
 
-5. Run the container:
-   -docker run -d -p 8080:8080 --name container2 app2
+```bash
+target/demo-0.0.1-SNAPSHOT.jar
+```
 
-6. Test the application:
-   -curl http://localhost:8080
+## Dockerfile
 
-7. Stop and remove the container:
-   -docker stop container2 
-   -docker rm container2
+Create a `Dockerfile` with the following content:
 
+```dockerfile
+# Use Java 17 base image
+FROM eclipse-temurin:17-jdk
 
-Project structure:
+# Set working directory
+WORKDIR /app
 
-Docker-1/
-├── Dockerfile
-├── pom.xml
-├── src/          # Spring Boot source code
-└── target/       # Generated JAR
+# Copy the JAR file into the container
+COPY target/demo-0.0.1-SNAPSHOT.jar app.jar
+
+# Expose port 8080
+EXPOSE 8080
+
+# Run the application
+CMD ["java", "-jar", "app.jar"]
+```
+
+## Build Docker Image
+
+```bash
+docker build -t app2 .
+```
+
+> Note: Check the image size using:
+
+```bash
+docker images
+```
+
+## Run Container
+
+```bash
+docker run -d --name container2 -p 8080:8080 app2
+```
+
+## Test the Application
+
+Open your browser or use curl:
+
+```bash
+curl http://localhost:8080/
+```
+
+## Stop and Remove the Container
+
+```bash
+docker stop container2
+docker rm container2
+```
