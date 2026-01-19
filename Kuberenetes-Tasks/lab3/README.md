@@ -103,7 +103,7 @@ env:
 ```
 <img width="801" height="462" alt="lab3-k41" src="https://github.com/user-attachments/assets/ec3e829e-afd3-4c78-85d1-24743e249cc1" />
 
----
+
 
 ### ✅ Summary
 
@@ -111,6 +111,5 @@ env:
 * Secrets store sensitive information securely with base64 encoding.
 * Applications can reference ConfigMaps and Secrets as environment variables.
 
-```
 
 
