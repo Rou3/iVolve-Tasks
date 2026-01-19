@@ -58,7 +58,7 @@ You should see the following under **Taints** for the tainted node:
 ```
 node=worker:NoSchedule
 ```
-<img width="866" height="128" alt="lab1-k1" src="https://github.com/user-attachments/assets/c29772aa-df3e-49ec-b942-d1ea95706cd0" />
 <img width="816" height="224" alt="lab1-k11" src="https://github.com/user-attachments/assets/55d733f7-ad1c-4e9e-a97a-fbc591ce73a9" />
+<img width="866" height="128" alt="lab1-k1" src="https://github.com/user-attachments/assets/c29772aa-df3e-49ec-b942-d1ea95706cd0" />
 
 ---
