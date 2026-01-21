@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodejs
+  template:
+    metadata:
+      labels:
+        app: nodejs
+    spec:
+      initContainers:
+  - name: init-mysql
+    image: mysql:5.7
+    command:
+      - sh
+      - -c
+      - |
+        echo "Waiting for MySQL to be ready..."
+        until mysql -h $DB_HOST -u $MYSQL_ROOT_USER -p$MYSQL_ROOT_PASSWORD -e "SELECT 1" >/dev/null 2>&1; do
+          echo "MySQL not ready yet... retrying in 5s"
+          sleep 5
+        done
+
+        echo "Creating database and user..."
+        mysql -h $DB_HOST -u $MYSQL_ROOT_USER -p$MYSQL_ROOT_PASSWORD -e "CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;"
+        mysql -h $DB_HOST -u $MYSQL_ROOT_USER -p$MYSQL_ROOT_PASSWORD -e "CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';"
+        mysql -h $DB_HOST -u $MYSQL_ROOT_USER -p$MYSQL_ROOT_PASSWORD -e "GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%'; FLUSH PRIVILEGES;"
+    env:
+      - name: DB_HOST
+        value: mysql-service
+      - name: MYSQL_ROOT_USER
+        value: root
+      - name: MYSQL_ROOT_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: mysql-secret
+            key: MYSQL_ROOT_PASSWORD
+      - name: MYSQL_DATABASE
+        valueFrom:
+          secretKeyRef:
+            name: mysql-secret
+            key: MYSQL_DATABASE
+      - name: MYSQL_USER
+        valueFrom:
+          secretKeyRef:
+            name: mysql-secret
+            key: MYSQL_USER
+      - name: MYSQL_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: mysql-secret
+            key: MYSQL_PASSWORD
+
