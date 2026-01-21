@@ -15,6 +15,7 @@ Deploy a **Node.js** application on Kubernetes using **Deployment**, **Persisten
 ```javascript
 require('http').createServer((req,res)=>res.end('Hello from Node.js!')).listen(3000)
 ````
+<img width="932" height="45" alt="lab6-k1" src="https://github.com/user-attachments/assets/c70a97cc-9297-470d-8d18-0f10f247f3ca" />
 
 * Environment Variables from:
 
@@ -47,6 +48,7 @@ require('http').createServer((req,res)=>res.end('Hello from Node.js!')).listen(3
 DB_HOST: mysql-service
 DB_USER: nodeuser
 ```
+<img width="936" height="159" alt="lab6-k3" src="https://github.com/user-attachments/assets/e913873b-bdc8-42cf-a09b-a51a0eeb808c" />
 
 ---
 
@@ -58,6 +60,8 @@ DB_USER: nodeuser
 ```text
 DB_PASSWORD: <base64-encoded-password>
 ```
+<img width="934" height="65" alt="lab6-k2" src="https://github.com/user-attachments/assets/61fce830-aa4d-472f-b906-4bfa31395e7a" />
+<img width="930" height="151" alt="lab6-k4" src="https://github.com/user-attachments/assets/f129b5f6-2c8e-45f1-a1ea-b1cb06e72fcb" />
 
 ---
 
@@ -104,8 +108,9 @@ kubectl apply -f ClusterIP
 kubectl get pods
 kubectl describe pod <pod-name>
 ```
+ <img width="930" height="201" alt="lab6-k5" src="https://github.com/user-attachments/assets/e5aa216e-34a3-40bf-a8d7-411900ac2775" />
+<img width="815" height="199" alt="lab6-kf" src="https://github.com/user-attachments/assets/c743f4a8-c0d0-4ecf-9c6b-2d9be5108064" />
 
-> Pods may show `0/1` or Pending if the image is not available; use an official Node.js image if needed.
 
 ---
 
