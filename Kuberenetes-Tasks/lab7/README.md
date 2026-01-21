@@ -195,6 +195,7 @@ Apply:
 kubectl apply -f nodejs-deployment.yaml
 kubectl get pods
 ```
+<img width="935" height="156" alt="lab7-k1" src="https://github.com/user-attachments/assets/e0cde919-6677-46e5-bd8f-1ca84de9c257" />
 
 ---
 
@@ -217,6 +218,7 @@ You should see:
 
 * `ivolve` database
 * `ivolveuser` with privileges on `ivolve`
+<img width="1062" height="528" alt="lab7-kfinall" src="https://github.com/user-attachments/assets/1bac2d6d-2a8e-4710-ad54-68f122289e26" />
 
 ---
 
