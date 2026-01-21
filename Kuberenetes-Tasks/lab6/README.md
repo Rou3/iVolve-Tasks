@@ -111,18 +111,6 @@ kubectl describe pod <pod-name>
  <img width="930" height="201" alt="lab6-k5" src="https://github.com/user-attachments/assets/e5aa216e-34a3-40bf-a8d7-411900ac2775" />
 <img width="815" height="199" alt="lab6-kf" src="https://github.com/user-attachments/assets/c743f4a8-c0d0-4ecf-9c6b-2d9be5108064" />
 
-
----
-
-## 3️⃣ Notes
-
-* If you get `ErrImagePull`:
-
-  * Use the official Node.js image like `node:18-alpine`
-  * Or build a local image and load it into Minikube
-* ClusterIP service is **internal only** and cannot be accessed from outside the cluster directly.
-* PVC ensures data persistence even if the pod is deleted.
-
 ---
 
 ## 4️⃣ Verification
