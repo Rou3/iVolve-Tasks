@@ -195,7 +195,9 @@ Apply:
 kubectl apply -f nodejs-deployment.yaml
 kubectl get pods
 ```
-<img width="935" height="156" alt="lab7-k1" src="https://github.com/user-attachments/assets/e0cde919-6677-46e5-bd8f-1ca84de9c257" />
+<img width="1038" height="227" alt="lab7-kstart" src="https://github.com/user-attachments/assets/8056f57a-9ad1-4b3e-956f-82feac8abad0" />
+
+<img width="1078" height="116" alt="lab7-k21" src="https://github.com/user-attachments/assets/cda99f48-c76e-471e-a6bd-3a3259bf2114" />
 
 ---
 
