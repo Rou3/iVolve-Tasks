@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nodejs-app
+  template:
+    metadata:
+      labels:
+        app: nodejs-app
+    spec:
+      containers:
+      - name: nodejs-container
+        image: node:18-alpine
+        command: ["node", "-e", "require('http').createServer((req,res)=>res.end('Hello from Node.js!')).listen(3000)"]
+        ports:
+        - containerPort: 3000
+        envFrom:
+        - configMapRef:
+            name: nodejs-config
+        - secretRef:
+            name: nodejs-secret
+        volumeMounts:
+        - name: nodejs-pv-storage
+          mountPath: /usr/src/app/data
+      tolerations:
+      - key: "node"
+        operator: "Equal"
+        value: "worker"
+        effect: "NoSchedule"
+      volumes:
+      - name: nodejs-pv-storage
+        persistentVolumeClaim:
+          claimName: nodejs-pvc
+
