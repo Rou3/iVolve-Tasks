@@ -140,10 +140,6 @@ curl http://localhost:8080
 Hello from Node.js!
 ```
 
----
 
-```
-
----
 
 
