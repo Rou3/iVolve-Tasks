@@ -64,6 +64,7 @@ kubectl get pods
 kubectl get svc
 ```
 <img width="930" height="112" alt="lab9-final" src="https://github.com/user-attachments/assets/130a2796-d9a1-45ac-b2b7-97f55b92dd36" />
+<img width="926" height="112" alt="lab9-kff" src="https://github.com/user-attachments/assets/c67a93d1-eb9a-47ef-8726-ec28c0ceee41" />
 
 
 ## ✅ Expected Behavior
