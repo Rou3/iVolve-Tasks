@@ -67,6 +67,7 @@ spec:
             cpu: "1"
             memory: 2Gi
 ```
+<img width="923" height="44" alt="lab8-k1" src="https://github.com/user-attachments/assets/72b06b43-1810-4dc8-b566-924e0ce81351" />
 
 ---
 
@@ -77,6 +78,8 @@ spec:
 ```bash
 kubectl apply -f nodejs-deployment.yaml
 ```
+<img width="928" height="67" alt="lab8-k2" src="https://github.com/user-attachments/assets/c3ff6cb2-8987-4d7a-b74e-8e3804d63f3d" />
+
 ---
 
 ### 2️⃣ Verify Pod Status
@@ -90,7 +93,7 @@ Expected output:
 ```text
 nodejs-app-xxxxx   1/1   Running
 ```
-
+<img width="925" height="113" alt="lab8-f" src="https://github.com/user-attachments/assets/9a499240-98b6-4409-bae8-a68438b6ea52" />
 ---
 
 ### 3️⃣ Verify Resource Requests & Limits
@@ -109,7 +112,7 @@ Limits:
   cpu:     1
   memory:  2Gi
 ```
-
+<img width="886" height="144" alt="lab8-finalyam" src="https://github.com/user-attachments/assets/f5d98c30-ea30-453c-9e9d-83749d116672" />
 ---
 
 ### 4️⃣ Monitor Resource Usage
@@ -135,15 +138,6 @@ nodejs-app     10m          30Mi
 * **Limits** define the maximum resources a Pod can consume
 * If requests exceed node capacity, the Pod remains in `Pending` state
 * CPU limits cause throttling, memory limits may cause OOMKill
-
----
-
-## ✅ Lab Status
-
-✔ Deployment created successfully
-✔ Resource requests and limits applied
-✔ Resources verified using `kubectl describe`
-✔ Usage monitored using `kubectl top`
 
 ---
 
