@@ -1,0 +1,77 @@
+# Lab 18: Control Pod-to-Pod Traffic via NetworkPolicy
+
+This lab demonstrates how to **control pod-to-pod communication** in Kubernetes using a **NetworkPolicy**.  
+The goal is to **restrict access to the MySQL pods** so that only specific application pods can connect.
+
+---
+
+## 📌 NetworkPolicy Specification
+
+- **Name:** `allow-app-to-mysql`  
+- **Pod Selector:** Pods with label `app=mysql`  
+- **Policy Types:** `Ingress` only  
+- **Ingress Rules:**  
+  - Allow traffic **only from application pods** (e.g., `app=alpine-app`)  
+  - Restrict access to **port 3306** (MySQL default port)
+
+---
+
+## 🗂️ Lab Resources
+
+### 1️⃣ MySQL Deployment
+- Pods labeled `app=mysql`  
+- Exposes port `3306` via ClusterIP service  
+- User for testing: `ivolve_user` with password `ivolve_pass`  
+
+### 2️⃣ Application Pods
+- Pods labeled `app=alpine-app`  
+- Lightweight Alpine pods used to test connectivity to MySQL  
+
+### 3️⃣ NetworkPolicy
+- Name: `allow-app-to-mysql`  
+- Allows only `alpine-app` pods to access MySQL pods on port 3306  
+- Blocks all other pods
+
+---
+
+## 🚀 How to Run
+
+1. Apply MySQL deployment and service:
+
+```bash
+kubectl apply -f mysql-deployment.yaml
+````
+
+2. Apply application pods (Alpine):
+
+```bash
+kubectl apply -f nodejs-deployment.yaml
+```
+
+3. Apply NetworkPolicy:
+
+```bash
+kubectl apply -f networkpolicy.yaml
+```
+
+4. Verify pods are running:
+
+```bash
+kubectl get pods
+kubectl get svc
+```
+
+## ✅ Expected Behavior
+
+* Only `alpine-app` pods can connect to MySQL pods on port 3306
+* All other pods **cannot** access MySQL pods
+
+---
+
+## ⚡ Notes
+
+* Ensure your cluster supports **NetworkPolicy** (e.g., Calico)
+* NetworkPolicy does **not** restrict outgoing traffic by default
+* MySQL user must allow connections from any host (`'%'`)
+
+---

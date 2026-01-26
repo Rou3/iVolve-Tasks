@@ -1,0 +1,5 @@
+CREATE DATABASE IF NOT EXISTS ivolve;
+CREATE USER IF NOT EXISTS 'ivolve_user'@'%' IDENTIFIED BY 'ivolve_pass';
+GRANT ALL PRIVILEGES ON ivolve.* TO 'ivolve_user'@'%';
+FLUSH PRIVILEGES;
+
