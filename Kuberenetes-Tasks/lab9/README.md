@@ -53,6 +53,9 @@ kubectl apply -f nodejs-deployment.yaml
 ```bash
 kubectl apply -f networkpolicy.yaml
 ```
+<img width="932" height="242" alt="lab9-k1" src="https://github.com/user-attachments/assets/2f515d2d-bc72-454a-a8ff-dc571c6bf452" />
+<img width="928" height="201" alt="lab9-k2" src="https://github.com/user-attachments/assets/62b1b5d7-5cfc-41de-995c-7b9c83f545a7" />
+
 
 4. Verify pods are running:
 
@@ -60,6 +63,8 @@ kubectl apply -f networkpolicy.yaml
 kubectl get pods
 kubectl get svc
 ```
+<img width="930" height="112" alt="lab9-final" src="https://github.com/user-attachments/assets/130a2796-d9a1-45ac-b2b7-97f55b92dd36" />
+
 
 ## ✅ Expected Behavior
 
