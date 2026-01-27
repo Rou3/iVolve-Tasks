@@ -78,28 +78,14 @@ kubectl get daemonset -n monitoring
 ```bash
 kubectl port-forward -n monitoring pod/<node-exporter-pod-name> 9100:9100
 ```
+<img width="1029" height="372" alt="lab10-kf" src="https://github.com/user-attachments/assets/a2c6f648-c400-422b-a614-2412936a09c0" />
 
 Then open in browser:
 
 ```
 http://localhost:9100/metrics
 ```
-
-#### Option 2: Using curl
-
-```bash
-curl http://localhost:9100/metrics
-```
-
-* You should see output like:
-
-```
-# HELP node_cpu_seconds_total Seconds the CPUs spent in each mode.
-# TYPE node_cpu_seconds_total counter
-node_cpu_seconds_total{cpu="0",mode="user"} 12345.67
-node_memory_MemTotal_bytes 8.589934592e+09
-...
-```
+<img width="1075" height="416" alt="lab10-browser" src="https://github.com/user-attachments/assets/73ebb55c-1435-4b8b-bf8a-8f5e13e172a9" />
 
 ---
 
