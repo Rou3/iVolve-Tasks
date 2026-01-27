@@ -108,5 +108,5 @@ http://localhost:9100/metrics
 * [x] Metrics exposed correctly on port `9100`
 * [x] Metrics include CPU, memory, disk, and network stats
 
-```
+
 
