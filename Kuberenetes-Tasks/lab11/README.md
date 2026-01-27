@@ -149,6 +149,7 @@ kubectl auth can-i create pods \
 ```
 
 Expected output: `no`
+
 <img width="1075" height="198" alt="lab11-kf" src="https://github.com/user-attachments/assets/bdc3598b-1f07-4382-871f-0720ae0b24ff" />
 
 ---
@@ -169,6 +170,3 @@ Expected output: `no`
 * [x] Role `pod-reader` created with `get` and `list` on Pods
 * [x] RoleBinding binds Role to Service Account
 * [x] Service Account can list pods but cannot modify them
-
-تحبي أعملهولك؟
-```
