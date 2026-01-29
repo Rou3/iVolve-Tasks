@@ -15,7 +15,7 @@ pipeline {
                 echo "Cloning repository..."
                 script {
                    
-                    def useManualClone = false
+                     def useManualClone = false
                     try {
                         checkout scm
                         echo "Using checkout scm (Pipeline from SCM)"
