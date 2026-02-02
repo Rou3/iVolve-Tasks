@@ -1,113 +1,113 @@
-# Lab 22 - Jenkins Pipeline for Application Deployment
+Jenkins CI/CD Pipeline with Docker & Kubernetes (Lab22)
 
-## Overview
-This lab demonstrates how to automate the complete deployment workflow of an application from GitHub to a Kubernetes cluster using **Jenkins CI/CD**.  
-The pipeline will clone the source code, run unit tests, build the app, build and push Docker images, update the deployment manifest, and deploy to Kubernetes.
+This repository demonstrates a complete CI/CD pipeline using Jenkins that:
+ • Builds a Java application using Maven
+ • Creates a Docker image
+ • Pushes the image to Docker Hub
+ • Deploys the application to Kubernetes (Minikube)
 
----
+⸻
 
-## Prerequisites
-- **Jenkins** (on VM, Docker, or Kubernetes)
-- **Docker** installed and running
-- **Kubernetes cluster** with namespace `ivolve`
-- **Docker Hub account**
-- **kubectl** configured to access the cluster
-- At least 5 pod quota in `ivolve` namespace
+🧱 Tech Stack
+ • Jenkins
+ • Maven
+ • Docker
+ • Docker Hub
+ • Kubernetes (Minikube)
+ • GitHub
 
----
+⸻
 
-## Project Structure
-```
+📂 Project Structure
 
-task-22/
-├── Jenkinsfile                
-├── deployment.yaml            
-├── jenkins-deployment.yaml    
-├── docker-compose-jenkins.yml 
+Jenkins_App/
+│
+├── Jenkinsfile
+├── Dockerfile
+├── pom.xml
+├── src/
 └── README.md
 
-````
 
----
+⸻
 
-## Pipeline Workflow
-The Jenkins pipeline performs the following steps:
+🚀 Jenkins Pipeline Stages
 
-1. **Checkout Source Code**
-   - Clone repository: `https://github.com/Ibrahim-Adel15/Jenkins_App.git`
-2. **Run Unit Tests**
-   - Node.js: `npm test`
-   - Java: `mvn test`
-   - Python: `pytest`
-3. **Build Application**
-   - Node.js: `npm install`
-   - Java: `mvn clean package`
-   - Python: `pip install -r requirements.txt`
-4. **Build Docker Image**
-   - Uses Dockerfile from GitHub
-   - Tags image with build number and `latest`
-5. **Push Image to Docker Hub**
-   - Authenticates with Jenkins-stored credentials
-6. **Delete Local Image**
-   - Clean up local Docker images
-7. **Update `deployment.yaml`**
-   - Replace image with the new Docker tag
-8. **Deploy to Kubernetes**
-   - Apply deployment to `ivolve` namespace
-   - Wait for rollout completion
+1️⃣ Clone Repository
+Pulls the source code from GitHub.
 
-**Post Actions:**
-- `always`: Cleanup workspace
-- `success`: Log success message
-- `failure`: Log failure message
+2️⃣ Build Application
+Uses Maven to compile and package the Java application:
+mvn clean package
 
----
+3️⃣ Build Docker Image
+Builds a Docker image for the application:
+docker build -t <dockerhub-user>/jenkins-app:latest .
 
-## Setup Jenkins
+4️⃣ Push Image to Docker Hub
+Authenticates using Jenkins credentials and pushes the image.
 
-### Plugins Required
-- Pipeline (workflow-aggregator)
-- Pipeline: Declarative
-- Git
-- Docker Pipeline
-- Kubernetes CLI
-- Credentials
+<img width="929" height="110" alt="lab22-1" src="https://github.com/user-attachments/assets/e6cc6ad0-fb3b-4ec4-b41f-24fa30fc890c" />
 
-### Credentials in Jenkins
-1. **Docker Hub**
-   - Username & Password
-2. **kubeconfig**
-   - File credential for cluster access
+5️⃣ Create Kubernetes Deployment YAML
+Dynamically generates a deployment.yaml file.
 
-### Recommended Pipeline Configuration
-- Use **Pipeline script from SCM**
-- Script path: `Jenkinsfile` in the repository
+<img width="815" height="70" alt="lab22-2" src="https://github.com/user-attachments/assets/0de6c741-1fdc-471f-b992-b835aad97e2f" />
 
----
+6️⃣ Update Deployment Image
+Replaces the placeholder image with the new Docker image tag.
 
-## Verify Deployment
-```bash
-kubectl get deployment jenkins-app -n ivolve
-kubectl get pods -n ivolve -l app=jenkins-app
-kubectl get svc -n ivolve
-kubectl logs -n ivolve -l app=jenkins-app --tail=50
-````
+7️⃣ Deploy to Kubernetes
+ • Applies the deployment to Minikube
+ • Exposes the service using NodePort
+ 
+⸻
 
----
+🔐 Jenkins Credentials Required
 
-## Notes
+Credential ID Type Description
+dockerhub-creds Username/Password Docker Hub login
+kubeconfig-minikube Secret File Minikube kubeconfig file
 
-* Jenkins can run in VM, Docker, or Kubernetes.
-* Pipeline automatically updates the Docker image in `deployment.yaml`.
-* Ensure Jenkins has access to Docker (socket & CLI) and kubectl.
-* Use declarative pipelines for better maintainability.
+<img width="1155" height="149" alt="lab22" src="https://github.com/user-attachments/assets/812830c6-d43a-4d4b-9085-44fcbd0cebb8" />
 
----
+⸻
 
-## References
+⚙️ Prerequisites
+ • Jenkins installed with:
+ • Docker
+ • Maven
+ • kubectl
+ • Minikube running
+ • Docker Hub account
 
-* [Jenkins Documentation](https://www.jenkins.io/doc/)
-* [Kubernetes Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
-* [Docker Hub](https://hub.docker.com/)
+⸻
+
+📌 How to Run
+ 1. Start Minikube
+
+minikube start
 
 
+ 2. Configure Jenkins credentials
+ 3. Create a Jenkins pipeline job and link it to this repo
+ 4. Run the pipeline 🎉
+
+⸻
+
+📷 Output
+
+After successful deployment, Jenkins will print the service URL:
+
+minikube service jenkins-app --url
+
+<img width="814" height="220" alt="lab22-4-1" src="https://github.com/user-attachments/assets/b38de393-fb58-4d30-ae65-3a484d731d28" />
+
+<img width="1066" height="235" alt="lab22-4" src="https://github.com/user-attachments/assets/060085d8-e535-46ff-8bfe-2709bed539e4" />
+
+
+⸻
+
+✨ Author
+
+Rawan Osama
