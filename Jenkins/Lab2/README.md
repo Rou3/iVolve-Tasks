@@ -1,4 +1,4 @@
-**Jenkins CI/CD Pipeline with Docker & Kubernetes (Lab22)
+# Jenkins CI/CD Pipeline with Docker & Kubernetes (Lab22)
 
 This repository demonstrates a complete CI/CD pipeline using Jenkins that:
  • Builds a Java application using Maven
@@ -8,7 +8,7 @@ This repository demonstrates a complete CI/CD pipeline using Jenkins that:
 
 ⸻
 
-🧱 Tech Stack
+## 🧱 Tech Stack
  • Jenkins
  • Maven
  • Docker
@@ -18,7 +18,7 @@ This repository demonstrates a complete CI/CD pipeline using Jenkins that:
 
 ⸻
 
-📂 Project Structure
+## 📂 Project Structure
 
 Jenkins_App/
 │
@@ -31,7 +31,7 @@ Jenkins_App/
 
 ⸻
 
-🚀 Jenkins Pipeline Stages
+## 🚀 Jenkins Pipeline Stages
 
 1️⃣ Clone Repository
 Pulls the source code from GitHub.
@@ -63,7 +63,7 @@ Replaces the placeholder image with the new Docker image tag.
  
 ⸻
 
-🔐 Jenkins Credentials Required
+## 🔐 Jenkins Credentials Required
 
 Credential ID Type Description
 dockerhub-creds Username/Password Docker Hub login
@@ -73,7 +73,7 @@ kubeconfig-minikube Secret File Minikube kubeconfig file
 
 ⸻
 
-⚙️ Prerequisites
+## ⚙️ Prerequisites
  • Jenkins installed with:
  • Docker
  • Maven
@@ -83,7 +83,7 @@ kubeconfig-minikube Secret File Minikube kubeconfig file
 
 ⸻
 
-📌 How to Run
+## 📌 How to Run
  1. Start Minikube
 
 minikube start
@@ -95,7 +95,7 @@ minikube start
 
 ⸻
 
-📷 Output
+## 📷 Output
 
 After successful deployment, Jenkins will print the service URL:
 
