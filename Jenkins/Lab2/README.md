@@ -1,4 +1,4 @@
-Jenkins CI/CD Pipeline with Docker & Kubernetes (Lab22)
+**Jenkins CI/CD Pipeline with Docker & Kubernetes (Lab22)
 
 This repository demonstrates a complete CI/CD pipeline using Jenkins that:
  • Builds a Java application using Maven
