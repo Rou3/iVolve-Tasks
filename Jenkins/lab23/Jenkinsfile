@@ -3,61 +3,50 @@
 pipeline {
     agent any
 
-    stages {
+    environment {
+        IMAGE_NAME = "rabdelrahman3332/jenkins-app:latest"
+    }
 
+    stages {
         stage('RunUnitTest') {
             steps {
-                script {
-                    runUnitTest()
-                }
+                script { runUnitTest() }
             }
         }
 
         stage('BuildApp') {
             steps {
-                script {
-                    buildApp()
-                }
+                script { buildApp() }
             }
         }
 
         stage('BuildImage') {
             steps {
-                script {
-                    buildImage("rabdelrahman3332/jenkins-app:latest")
-                }
+                script { buildImage(env.IMAGE_NAME) }
             }
         }
 
         stage('ScanImage') {
             steps {
-                script {
-                    scanImage()
-                }
+                script { scanImage() }
             }
         }
 
         stage('PushImage') {
             steps {
-                script {
-                    pushImage()
-                }
+                script { pushImage(env.IMAGE_NAME) }
             }
         }
 
         stage('RemoveImageLocally') {
             steps {
-                script {
-                    removeImageLocally()
-                }
+                script { removeImageLocally(env.IMAGE_NAME) }
             }
         }
 
         stage('DeployOnK8s') {
             steps {
-                script {
-                    deployOnK8s()
-                }
+                script { deployOnK8s() }
             }
         }
     }
@@ -66,6 +55,12 @@ pipeline {
         success {
             echo "Pipeline finished successfully!"
         }
+        failure {
+            echo "Pipeline failed. Check the logs."
+        }
+    }
+}
+
         failure {
             echo "Pipeline failed. Check the logs."
         }
