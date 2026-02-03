@@ -1,5 +1,8 @@
-def call(String image) {
-    dir('Jenkins/lab23') {
-        sh "docker build -t ${image} ."
+stage('BuildImage') {
+    steps {
+        script {
+            buildImage("rabdelrahman3332/jenkins-app:latest")
+        }
     }
 }
+
