@@ -1,6 +1,4 @@
-def call(image) {
-    stage('PushImage') {
-        sh "docker push ${image}"
-    }
+def call(String image) {
+    sh "docker push ${image}"
 }
 
