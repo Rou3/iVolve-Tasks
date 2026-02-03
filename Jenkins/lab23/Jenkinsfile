@@ -1,9 +1,10 @@
-Library('lab23') _
+@Library('lab23') _
 
 pipeline {
     agent any
 
     stages {
+
         stage('RunUnitTest') {
             steps {
                 script {
@@ -24,10 +25,9 @@ pipeline {
             steps {
                 script {
                     buildImage("rabdelrahman3332/jenkins-app:latest")
+                }
+            }
         }
-    }
-}
-
 
         stage('ScanImage') {
             steps {
@@ -44,7 +44,8 @@ pipeline {
                 }
             }
         }
-         stage('RemoveImageLocally') {
+
+        stage('RemoveImageLocally') {
             steps {
                 script {
                     removeImageLocally()
@@ -66,8 +67,7 @@ pipeline {
             echo "Pipeline finished successfully!"
         }
         failure {
-            echo "Pipeline failed. Check the logs." 
+            echo "Pipeline failed. Check the logs."
         }
     }
-
 }
