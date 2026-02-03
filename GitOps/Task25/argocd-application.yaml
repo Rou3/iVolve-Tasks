@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jenkins-app-gitops
+  namespace: argocd
+  
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  
+  source:
+    repoURL: https://github.com/Rou3/iVolve-Tasks.git  
+    targetRevision: main  
+    path: GitOps-Task25
+    
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: gitops  
+    
+  syncPolicy:
+    automated:
+      prune: true  
+      selfHeal: true  
+    syncOptions:
+    - CreateNamespace=true  
+    - PrunePropagationPolicy=foreground
+    - PruneLast=true
