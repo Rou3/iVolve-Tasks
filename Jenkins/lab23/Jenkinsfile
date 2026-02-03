@@ -33,18 +33,13 @@ pipeline {
         }
 
         stage('PushImage') {
-            steps {
-                script {
-                    // login على Docker Hub باستخدام Jenkins credentials
-                    withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', 
-                                                     usernameVariable: 'DOCKER_USER', 
-                                                     passwordVariable: 'DOCKER_PASS')]) {
-                        sh "docker login -u $DOCKER_USER -p $DOCKER_PASS"
-                        sh "docker push ${env.IMAGE_NAME}"
-                    }
-                }
-            }
+    steps {
+        script {
+            echo "Pushing image: ${env.IMAGE_NAME}"
+            pushImage(env.IMAGE_NAME)
         }
+    }
+}
 
         stage('RemoveImageLocally') {
             steps {
