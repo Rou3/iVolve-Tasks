@@ -1,6 +1,7 @@
 def call() {
-    stage('BuildApp') {
-        sh 'echo Building Application'
+    dir('Jenkins/lab23') {
+        sh 'mvn clean package -DskipTests'
+        sh 'ls -l target || true'
     }
 }
 
