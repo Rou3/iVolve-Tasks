@@ -1,0 +1,73 @@
+@Library('lab23-shared') _  
+
+pipeline {
+    agent any  
+
+    stages {
+        stage('RunUnitTest') {
+            steps {
+                script {
+                    runUnitTest()
+                }
+            }
+        }
+
+        stage('BuildApp') {
+            steps {
+                script {
+                    buildApp()
+                }
+            }
+        }
+
+        stage('BuildImage') {
+            steps {
+                script {
+                    buildImage()
+                }
+            }
+        }
+
+        stage('ScanImage') {
+            steps {
+                script {
+                    scanImage()
+                }
+            }
+        }
+
+        stage('PushImage') {
+            steps {
+                script {
+                    pushImage()
+                }
+            }
+        }
+
+        stage('RemoveImageLocally') {
+            steps {
+                script {
+                    removeImageLocally()
+                }
+            }
+        }
+
+        stage('DeployOnK8s') {
+            steps {
+                script {
+                    deployOnK8s()
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "Pipeline finished successfully!"
+        }
+        failure {
+            echo "Pipeline failed. Check the logs."
+        }
+    }
+}
+
