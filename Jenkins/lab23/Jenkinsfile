@@ -1,4 +1,4 @@
-@Library('lab23-shared') _  
+@Library('lab23') _  
 
 pipeline {
     agent any  
