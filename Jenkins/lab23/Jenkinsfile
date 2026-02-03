@@ -23,10 +23,11 @@ pipeline {
         stage('BuildImage') {
             steps {
                 script {
-                    buildImage()
-                }
-            }
+                    buildImage("rabdelrahman3332/jenkins-app:latest")
         }
+    }
+}
+
 
         stage('ScanImage') {
             steps {
