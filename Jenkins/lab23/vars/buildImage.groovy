@@ -1,7 +1,5 @@
-def call(image) {
-    stage('BuildImage') {
-        dir('docker-labs/iVolve-Tasks/Jenkins/lab23') {
-            sh "docker build -t ${image} ."
-        }
+def call(String image) {
+    dir('Jenkins/lab23') {
+        sh "docker build -t ${image} ."
     }
 }
