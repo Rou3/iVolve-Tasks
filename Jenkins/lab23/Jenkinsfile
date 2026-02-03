@@ -116,3 +116,9 @@ pipeline {
         }
         failure {
             echo "============================================"
+            echo "POST ACTION: FAILURE"
+            echo "Pipeline failed! Check logs for details."
+            echo "============================================"
+        }
+    }
+}
