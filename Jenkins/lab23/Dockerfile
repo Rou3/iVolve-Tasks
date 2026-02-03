@@ -1,32 +1,12 @@
-FROM jenkins/inbound-agent:latest
+FROM maven:sapmachine
 
-USER root
+# Set working directory in container
+WORKDIR /app
 
-RUN apt-get update && \
-    apt-get install -y \
-    curl \
-    ca-certificates \
-    maven \
-    wget \
-    gnupg \
-    lsb-release \
-    && rm -rf /var/lib/apt/lists/*
+# Copy JAR file
+COPY target/demo-0.0.1-SNAPSHOT.jar .
 
-RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && \
-    chmod +x kubectl && \
-    mv kubectl /usr/local/bin/kubectl && \
-    kubectl version --client
+# Run the application
+CMD ["java", "-jar", "demo-0.0.1-SNAPSHOT.jar"]
 
-RUN wget -qO- https://aquasecurity.github.io/trivy-repo/deb/public.key | apt-key add - && \
-    echo "deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main" | tee -a /etc/apt/sources.list.d/trivy.list && \
-    apt-get update && \
-    apt-get install -y trivy && \
-    trivy --version
-
-RUN mvn -version && \
-    kubectl version --client && \
-    trivy --version
-
-USER jenkins
-
-WORKDIR /home/jenkins/agent
+EXPOSE 8080
