@@ -15,15 +15,9 @@ cd Jenkins_App
 
 ---
 
-## **2️⃣ Prepare k8s Folder & Deployment**
+## **2️⃣ Prepare k8s Deployment**
 
-### 2.1 Create `k8s` folder (if not existing)
-
-```bash
-mkdir k8s
-```
-
-### 2.2 Create `deployment.yaml`
+### 2. Create `deployment.yaml`
 
 ```yaml
 apiVersion: apps/v1
@@ -199,4 +193,5 @@ kubectl get svc
 * To update with a new Docker image in the future, either edit `deployment.yaml` or let Jenkins pipeline handle it
 * Automatic sync ensures any GitHub push updates the cluster
 * Add Service or Ingress if you want external access to the app
+
 
