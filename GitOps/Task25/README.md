@@ -154,7 +154,7 @@ kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.pas
 
    * Name: `jenkins-app`
    * Project: `default`
-   * Repo URL: `https://github.com/Ibrahim-Adel15/Jenkins_App.git`
+   * Repo URL: `https://github.com/Rou3/iVolve-Tasks.git`
    * Path: `k8s`
    * Cluster: `https://kubernetes.default.svc`
    * Namespace: `default`
