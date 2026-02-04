@@ -1,0 +1,33 @@
+---
+- name: Configure Nginx Web Server - Lab 2
+  hosts: managed
+  become: yes
+
+  tasks:
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Ensure Nginx is running
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: Deploy custom web page
+      copy:
+        content: |
+          <html>
+          <head>
+              <title>Rawan Osama</title>
+          </head>
+          <body>
+              <h1>Nginx configured using Ansible Playbook</h1>
+              <p>Ansible Lab 2 completed successfully.</p>
+          </body>
+          </html>
+        dest: /var/www/html/index.html
+
+

@@ -1,0 +1,47 @@
+---
+# tasks file for jenkins
+- name: Install Java
+  apt:
+    name: openjdk-17-jdk
+    state: present
+    update_cache: yes
+  become: yes
+
+- name: Add Jenkins repository key
+  apt_key:
+    url: https://pkg.jenkins.io/debian/jenkins.io.key
+    state: present
+  become: yes
+
+- name: Add Jenkins repository
+  apt_repository:
+    repo: deb https://pkg.jenkins.io/debian binary/
+    state: present
+    filename: jenkins
+    update_cache: yes
+  become: yes
+
+- name: Install Jenkins
+  apt:
+    name: jenkins
+    state: present
+  tags: jenkins
+  become: yes
+
+- name: Start and enable Jenkins
+  service:
+    name: jenkins
+    state: started
+    enabled: yes
+  tags: jenkins
+
+- name: Fetch Jenkins password
+  shell: cat /var/lib/jenkins/secrets/initialAdminPassword
+  changed_when: false
+  register: jenkins_initial_password
+  become: yes
+  
+- name: Print Jenkins Password
+  debug:
+    var: jenkins_initial_password.stdout  
+
