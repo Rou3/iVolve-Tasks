@@ -11,7 +11,7 @@ cd Jenkins_App
 >
 > * Dockerfile
 > * Application files
-> * You will create a `k8s/` folder for the deployment YAMLs.
+> * You will create deployment YAMLs.
 
 ---
 
