@@ -1,0 +1,34 @@
+---
+- name: Secure MySQL setup with Ansible Vault
+  hosts: localhost
+  become: yes
+  vars_files:
+    - vault.yml
+
+  tasks:
+    - name: Ensure iVolve database exists
+      community.mysql.mysql_db:
+        name: iVolve
+        state: present
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+
+    - name: Ensure iVolve user exists with all privileges
+      community.mysql.mysql_user:
+        name: "{{ mysql_user }}"
+        password: "{{ mysql_user_password }}"
+        priv: "iVolve.*:ALL"
+        host: "%"
+        state: present
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+
+    - name: Verify access to iVolve database
+      shell: |
+        mysql -u {{ mysql_user }} -p'{{ mysql_user_password }}' -e "SHOW DATABASES;"
+      register: db_check
+
+    - name: Show database check output
+      debug:
+        var: db_check.stdout_lines
+
